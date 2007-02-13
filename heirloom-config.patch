@@ -1,0 +1,78 @@
+--- heirloom-070115/build/mk.config.org	2007-02-13 14:42:04.194623000 +0100
++++ heirloom-070115/build/mk.config	2007-02-13 14:44:32.106623000 +0100
+@@ -73,7 +73,7 @@
+ # Location for default files. Make sure that this directory is accessible
+ # to all users.
+ #
+-DFLDIR = /etc/default
++DFLDIR = /etc/heirloom
+ 
+ #
+ # Location for the spell history file (contains misspelled words for
+@@ -90,7 +90,7 @@
+ # Where to store the file command's magic. Note that the existing
+ # file at this location is replaced unconditionally at installation.
+ #
+-MAGIC = $(DEFLIB)/magic
++MAGIC = /etc/magic
+ 
+ #
+ # The group whose members may write utmp or utmpx entries. Appropriate values
+@@ -113,7 +113,7 @@
+ # does not supply our needs. Use -ltermcap instead and add -DUSE_TERMCAP
+ # to CPPFLAGS.
+ #
+-LCURS = -lcurses
++LCURS = -lncurses
+ 
+ #
+ # Socket library, necessary on Solaris and Open UNIX. If your system has
+@@ -135,15 +135,15 @@
+ # zlib or don't want to use it; you need it only if you want to use inflate
+ # compression when creating zip files with cpio.
+ #
+-LIBZ = -Wl,-Bstatic -lz -Wl,-Bdynamic
++LIBZ = -lz
+ USE_ZLIB = 1
+ 
+ #
+ # The name of the bzip2 library, and whether to use it. The library is only
+ # needed to read and write bzip2 compressed parts of zip files with cpio.
+ #
+-#LIBBZ2 = -Wl,-Bstatic -lbz2 -Wl,-Bdynamic
+-USE_BZLIB = 0
++LIBBZ2 = -lbz2
++USE_BZLIB = 1
+ 
+ #
+ # Compiler and linker flags. HOSTCC is for cross compiling.
+@@ -196,15 +196,15 @@
+ # compiler mode (which is the default) until this issue is properly
+ # handled by the system vendor.
+ #
+-CFLAGS = -O -fomit-frame-pointer $(WARN)
+-CFLAGS2 = -O2 -fomit-frame-pointer $(WARN)
+-CFLAGSS = -Os -fomit-frame-pointer $(WARN)
+-CFLAGSU = -O2 -fomit-frame-pointer -funroll-loops $(WARN)
++CFLAGS = $(OPTFLAGS) -fomit-frame-pointer $(WARN)
++CFLAGS2 = $(OPTFLAGS) -fomit-frame-pointer $(WARN)
++CFLAGSS = $(OPTFLAGS) -fomit-frame-pointer $(WARN)
++CFLAGSU = $(OPTFLAGS) -fomit-frame-pointer -funroll-loops $(WARN)
+ 
+ #
+ # Binaries are stripped with this command after installation.
+ #
+-STRIP = strip -s -R .comment -R .note
++STRIP = /bin/true
+ 
+ #
+ # The define for large file support in 32-bit environments.
+@@ -233,7 +233,7 @@
+ # Yacc implementations known to work with the Heirloom Toolchest are
+ # the original Unix yacc, Berkeley yacc, and GNU bison -y (v. 1.875).
+ #
+-YACC = yacc
++YACC = bison
+ 
+ #
+ # Lex implementations known to work with the Heirloom Toolchest are

@@ -1,0 +1,10 @@
+--- heirloom-070115/diff/diffreg.c.org	2007-02-13 14:49:21.430623000 +0100
++++ heirloom-070115/diff/diffreg.c	2007-02-13 14:49:50.022623000 +0100
+@@ -86,6 +86,7 @@
+ #include <wctype.h>
+ #include <inttypes.h>
+ #include "mbtowi.h"
++#define splice(x, y) diff_splice(x, y)
+ /*
+  * diff - compare two files.
+  */
