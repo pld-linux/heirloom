@@ -1,6 +1,6 @@
 %define snap	070115
 Summary:	A collection of standard Unix utilities
-Summary(pl.UTF-8):Kolekcja standardowych narzędzi Uniksowych
+Summary(pl.UTF-8):	Kolekcja standardowych narzędzi Uniksowych
 Name:		heirloom
 Version:	0.1
 Release:	0.%{snap}.1
@@ -38,8 +38,30 @@ The Heirloom Toolchest is a collection of standard Unix utilities.
   Tru64 UNIX (-e). It is also available with the pax interface.
 - Extensive documentation including a manual page for any utility.
 
+%description -l pl.UTF-8
+Heirloom Toolchest to zestaw standardowych narzędzi uniksowych.
+
+- Wywodzi się z oryginalnego materiału uniksowego wydanego jako Open
+  Source przez Calderę i Suna.
+- Udostępniono wiele wersji wielu narzędzi w celu osiągnięcia
+  zgodności z różnymi specyfikacjami i wersjami Uniksa, a konkretnie
+  SVID3/SVR4, SVID4/SVR4.2MP, POSIX.2-1992/SUSV2, POSIX.1-2001/SUSV3
+  oraz 4BSD (/usr/ucb w SVR4).
+- Obsługa linii dowolnej długości i w wielu przypadkach binarnych
+  danych wejściowych.
+- Obsługa wielobajtowych znaków w UTF-8 i wielu kodowań
+  wschodnioazjatyckich.
+- Ponad 100 narzędzi, w tym bc, cpio, diff, ed, file, find, grep, man,
+  nawk, oawk, pax, ps, sed, sort, spell i tar.
+- Narzędzie cpio potrafi odczytywać i zapisywać pliki zip, pliki GNU
+  tar oraz formaty cpio z systemów Cray UNICOS, SGI IRIX (-K), SCO
+  UnixWare (-c) i Tru64 UNIX (-e). Jest dostępne także z interfejsem
+  pax.
+- Wyczerpująca dokumentacja wraz ze stronami manuala dla każdego
+  narzędzia.
+
 %prep
-%setup  -q -n %{name}-%{snap}
+%setup -q -n %{name}-%{snap}
 %patch0 -p1
 %patch1 -p1
 
@@ -62,7 +84,6 @@ The Heirloom Toolchest is a collection of standard Unix utilities.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}}
 
 %{__make} install \
@@ -71,9 +92,9 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_mandir}}
 	DEFSBIN=%{_sbindir} \
 	SV3BIN=%{_bindir} \
 	S42BIN=%{_bindir} \
-        SUSBIN=%{_bindir} \
-        SU3BIN=%{_bindir} \
-        UCBBIN=%{_bindir} \
+	SUSBIN=%{_bindir} \
+	SU3BIN=%{_bindir} \
+	UCBBIN=%{_bindir} \
 	DEFLIB=%{_libdir} \
 	MANDIR=%{_mandir} \
 	TTYGRP="" \
