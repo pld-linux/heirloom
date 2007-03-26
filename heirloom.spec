@@ -15,6 +15,7 @@ BuildRequires:	bc
 BuildRequires:	bison
 BuildRequires:	bzip2-devel
 BuildRequires:	ed
+BuildRequires:	flex
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
